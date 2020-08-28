@@ -23,12 +23,12 @@ namespace TheMonolit.API.Controllers
 
         // GET api/values
         [HttpGet]
-        public async Task<IActionResult> GetValues()
-        //public  IActionResult GetValues()
+        //public async Task<IActionResult> GetValues()
+        public  IActionResult GetValues()
         {
             //var values = await _context.FundDataValues.ToListAsync();
             //return Ok(values);
-            var values = await JsonConvert.DeserializeObject<IList<FundDataValue>>(await  System.IO.File.ReadAllText("Data/FundData.js"));
+            var values =  JsonConvert.DeserializeObject<IList<FundDataValue>>(  System.IO.File.ReadAllText("Data/FundData.js"));
             //return  Ok(JObject.Parse(System.IO.File.ReadAllText("Data/FundData.json")));
             return  Ok(values);
         }
